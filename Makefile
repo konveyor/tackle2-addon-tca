@@ -13,11 +13,11 @@ build-image:
 	$docker build -t ${IMG} .
 
 cmd: fmt vet
-	go build -ldflags="-w -s" -o bin/addon github.com/divsan93/tta_tca/cmd
+	go build -ldflags="-w -s" -o bin/addon github.com/divsan93/tackle2-addon-tca/cmd
 
 run: fmt vet
 	go run ./cmd/main.go
-	
+
 .PHONY: start-minikube
 START_MINIKUBE_SH = ./bin/start-minikube.sh
 start-minikube:
