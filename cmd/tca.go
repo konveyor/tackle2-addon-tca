@@ -91,7 +91,7 @@ func (r *Tca) Run() (err error) {
 	}
 	// setting facts using sub-resource
 	facts := addon.Application.Facts(r.application.ID)
-	err = facts.Set("Container Advisory", myFacts)
+	err = facts.Set("Container_Advisory", myFacts)
 	// r.application.Facts["Container Advisory"] = facts
 	// err = addon.Application.Update(r.application)
 	if err != nil {
