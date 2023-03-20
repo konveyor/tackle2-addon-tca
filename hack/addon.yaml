@@ -2,8 +2,7 @@
 kind: Addon
 apiVersion: tackle.konveyor.io/v1alpha1
 metadata:
-  name: tcafeb
+  name: tca
   namespace: konveyor-tackle
 spec:
-  # image: quay.io/divsan/tca-addon-working:v1
   image: tca-addon-wc:v16

@@ -7,14 +7,14 @@ curl -X POST ${host}/hub/tasks -d \
 '{
   "name": "TCA",
   "state": "Ready",
-  "locator": "tcafeb",
-  "addon": "tcafeb",
+  "locator": "tca",
+  "addon": "tca",
   "application": {
-    "id": 5
+    "id": 1
   },
   "data": {
       "application_name": "TCA",
       "application_description": "test application",
-      "technology_summary": "R,sap,.net,jboss"
+      "technology_summary": "RHEL,.net,jboss"
     }
 }'

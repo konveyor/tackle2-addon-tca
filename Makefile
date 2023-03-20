@@ -13,7 +13,7 @@ build-image:
 	$docker build -t ${IMG} .
 
 cmd: fmt vet
-	go build -ldflags="-w -s" -o bin/addon github.com/divsan93/tackle2-addon-tca/cmd
+	go build -ldflags="-w -s" -o bin/addon github.com/divsan93/tta_tca/cmd
 
 run: fmt vet
 	go run ./cmd/main.go

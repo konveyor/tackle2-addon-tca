@@ -37,6 +37,7 @@ func (r *Tca) Run() (err error) {
 	elapsed := time.Since(start)
 	addon.Activity("[TCA] DONE - execution time %s", elapsed)
 
+	// Mapping standardize output to the tag categories in tackle inventory
 	tagKeyMap := make(map[string]string)
 	tagKeyMap["OS"] = "Operating System"
 	tagKeyMap["Lang"] = "Language"
@@ -45,6 +46,7 @@ func (r *Tca) Run() (err error) {
 	tagKeyMap["Libs"] = "Application Type"
 	tagKeyMap["Dependent Apps"] = "Application Type"
 
+	// Creating keys for setting facts
 	factKeys := []string{"Ref Dockers", "Reason", "Recommend"}
 
 	tags := make(map[string][]string)
@@ -84,16 +86,15 @@ func (r *Tca) Run() (err error) {
 			}
 		}
 	}
-
+	// tagging new entities from standardize output
 	for k := range tags {
 		addon.Activity("TagType:%s", k, "Numtags:%s", len(tags[k]), "TagName:%s", tags[k])
 		addTags(r.application, k, tags[k])
 	}
+	// container recommendation is set as facts
 	// setting facts using sub-resource
 	facts := addon.Application.Facts(r.application.ID)
 	err = facts.Set("Container_Advisory", myFacts)
-	// r.application.Facts["Container Advisory"] = facts
-	// err = addon.Application.Update(r.application)
 	if err != nil {
 		return
 	}
